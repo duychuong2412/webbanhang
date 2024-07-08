@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="Fragments/head :: head"></head>
+<body>
+<div th:replace="Fragments/header :: header(${menus})"></div>
+<div class="content">
+    <div class="container">
+        <div th:replace="Fragments/container :: container"></div>
+        <div class="col-md-12">
+            <div layout:fragment="content"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="Fragments/footer :: footer"></div>
+<script th:src="@{/User/js/jquery.min.js}"></script>
+<script th:src="@{/User/js/bootstrap.min.js}"></script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"-->
+<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Layout</title>-->
+<!--    <link rel="stylesheet"-->
+<!--          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-primary">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand text-white" href="/product">Web Bán Hàng</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"-->
+<!--                data-bs-target="#navbarSupportedContent"-->
+<!--                aria-controls="navbarSupportedContent" aria-expanded="false" arialabel="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-white active" aria-current="page"-->
+<!--                       href="/product">Product</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">-->
+<!--                    <a th:href="@{/product/add}" class="nav-link text-white">Add-->
+<!--                        New Product</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">-->
+<!--                    <a th:href="@{/categories/add}" class="nav-link text-white">Add-->
+<!--                        New Category</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">-->
+<!--                <li class="nav-item d-flex align-items-center"-->
+<!--                    sec:authorize="isAuthenticated()">-->
+<!--                    <span class="navbar-text text-white">-->
+<!--                        Xin chào, <span sec:authentication="name" style="marginright: 20px;"></span>-->
+<!--                    </span>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                    <form th:action="@{/logout}" method="post">-->
+<!--                        <button class="btn btn-outline-light"-->
+<!--                                type="submit">Logout</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="!isAuthenticated()">-->
+<!--                    <a class="btn btn-outline-light" href="/login">Login</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<div class="container mt-5">-->
+<!--    <section layout:fragment="content">-->
+<!--        &lt;!&ndash; Nội dung cụ thể của từng trang sẽ được đặt tại đây &ndash;&gt;-->
+<!--    </section>-->
+<!--</div>-->
+<!--<script-->
+<!--        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="User/head :: head">-->
+
+<!--</head>-->
+<!--<body>-->
+
+
+
+<!--<th:block th:replace="User/header :: header"></th:block>-->
+<!--<th:block th:replace="User/content :: content"> </th:block>-->
+<!--<th:block th:replace="User/footer :: footer"></th:block>-->
+
+<!--<div id="modalSignup" class="modal fade" role="dialog">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                <h4 class="modal-title">Đăng ký</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="username">Username:</label>-->
+<!--                        <input type="text" class="form-control" id="username" placeholder="Nhập username" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="fullname">Họ tên:</label>-->
+<!--                        <input type="text" class="form-control" id="fullname" placeholder="Nhập họ tên" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="address">Địa chỉ:</label>-->
+<!--                        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="phone">Số điện thoại:</label>-->
+<!--                        <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="email">Email:</label>-->
+<!--                        <input type="email" class="form-control" id="email" placeholder="Nhập email" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="password">Mật khẩu:</label>-->
+<!--                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="confirmPassword">Nhập lại mật khẩu:</label>-->
+<!--                        <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu" required>-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-primary">Đăng ký</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<script th:src="@{User/js/jquery.min.js}"></script>-->
+<!--<script th:src="@{User/js/bootstrap.min.js}"></script>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Thymeleaf with Spring Security</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+<header class="header" th:fragment="header(menus)">
+  <div class="header__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div class="header__top__left">
+            <ul>
+              <li sec:authorize="isAuthenticated()" style="display: flex; margin-left: 20px">
+                                <span class="navbar-text text-black">
+                                    Xin chào, <span sec:authentication="name" style="margin-right: 20px;"></span>
+                                </span>
+              </li>
+              <li sec:authorize="isAuthenticated()" style="display: flex; align-items: center; margin-left: 20px;">
+                <span th:text="${userName}" style="margin-right: 10px;"></span>
+                <img th:if="${userPicture != null}" th:src="${userPicture}" alt="User Picture" class="rounded-circle" width="30" height="30">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="header__top__right">
+            <div class="header__top__right__social">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href="#"><i class="fa fa-pinterest-p"></i></a>
+            </div>
+            <div class="header__top__right__language">
+              <img src="img/language.png" alt="">
+              <div>English</div>
+              <span class="arrow_carrot-down"></span>
+              <ul>
+                <li><a href="#">Spanish</a></li>
+                <li><a href="#">English</a></li>
+              </ul>
+            </div>
+            <div class="header__top__right__auth">
+              <a th:href="@{/login}"><i class="fa fa-user"></i> Login</a>
+              <form th:action="@{/logout}" method="post">
+                <button type="submit"><i class="fa-solid fa-right-from-bracket">Logout</i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="header__logo">
+          <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <nav class="header__menu">
+          <ul>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="./shop-grid.html">Shop</a></li>
+            <li><a href="#">Pages</a>
+              <ul class="header__menu__dropdown">
+                <li><a href="/shop-details">Shop Details</a></li>
+                <li><a href="/cart">Shopping Cart</a></li>
+                <li><a href="./checkout.html">Check Out</a></li>
+                <li><a href="./blog-details.html">Blog Details</a></li>
+              </ul>
+            </li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-3">
+        <div class="header__cart">
+          <ul>
+<!--            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>-->
+            <li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+
+
+          </ul>
+          <div class="header__cart__price">item: <span>$150.00</span></div>
+
+        </div>
+      </div>
+    </div>
+    <div class="humberger__open">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</header>
+</body>
+</html>
